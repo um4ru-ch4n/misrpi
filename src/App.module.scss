@@ -1,0 +1,96 @@
+.wrapper {
+    max-width: 100rem;
+    margin: auto;
+    padding: 5rem 10rem;
+    background-image: url("./coffee.jpeg");
+    background-size: cover;
+}
+
+.content {
+    background-color: rgba(61, 57, 57, 0.712);
+    border-radius: 3rem;
+    color: #f9e397;
+}
+
+.main {
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    justify-items: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.matrix {
+    margin: 0rem 0 2rem 0;
+    padding: 1rem;
+    // background-color: aqua;
+    min-width: 27rem;
+    max-width: 27rem;
+
+    p {
+        margin: 1rem 0 1rem 0;
+        min-height: 5rem;
+    }
+}
+
+.matrixInput {
+    margin: 0 auto;
+    display: block;
+    min-width: 25rem;
+    min-height: 12rem;
+    background-color: rgba(61, 57, 57, 0.712);
+    color: #f9e397;
+    font-size: 1.8rem;
+    padding: 1rem;
+    border-radius: 1.5rem;
+}
+
+.resultColumns {
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    justify-items: center;
+    align-items: flex-end;
+    max-width: 50rem;
+}
+
+.resultColumn {
+    .title {
+        margin: {
+            top: 0;
+            right: 0;
+            bottom: 1rem;
+            left: 0;
+        }
+    }
+}
+
+.offsetWrapper {
+    padding: 1rem 0 0 2rem;
+
+    .sizeInput {
+        display: inline-block;
+        margin: 0 1rem;
+        min-height: 2rem;
+        width: 4rem;
+        background-color: rgba(61, 57, 57, 0.712);
+        color: #f9e397;
+        padding: 0.2rem 1rem;
+        border-radius: 1rem;
+        font-size: 1.4rem;
+    }
+}
+
+.resolve {
+    background-color: rgb(104, 91, 91);
+    color: #f9e397;
+    padding: 0.4rem 1rem;
+    border-radius: 1rem;
+    font-size: 1.4rem;
+}
+
+.hasError {
+    border-color: red;
+}
