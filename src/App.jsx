@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import _ from 'lodash';
 
 import classes from './App.module.scss'
 import './index.scss';
@@ -40,7 +41,6 @@ export const App = () => {
 	}
 
 	const computeNet = (vector, matrix) => {
-		console.log(vector)
 		if (vector.length !== size || matrix.length !== size) return []
 
 		const result = Array.from({ length: vector.length }).fill(0)
@@ -49,7 +49,6 @@ export const App = () => {
 			for (let j = 0; j < vector.length; j++) {
 				result[i] += parseFloat(matrix[i][j]) * parseFloat(vector[j]);
 			}
-			console.log(result[i]);
 		}
 
 		return result
@@ -99,6 +98,7 @@ export const App = () => {
 					<div className={classes.matrix}>
 						<p>Вектор</p>
 						<MatrixInput
+							isVector={true}
 							rows={size}
 							columns={1}
 							className={`${classes.matrixInput} ${classes.vector}`}
@@ -109,6 +109,8 @@ export const App = () => {
 					<div className={classes.matrix}>
 						<p>Весовые коэффициенты первого слоя</p>
 						<MatrixInput
+							rows={size}
+							columns={size}
 							className={classes.matrixInput}
 							value={W}
 							setValue={setW}
@@ -118,6 +120,8 @@ export const App = () => {
 					<div className={classes.matrix}>
 						<p>Весовые коэффициенты второго слоя</p>
 						<MatrixInput
+							rows={size}
+							columns={size}
 							className={classes.matrixInput}
 							value={V}
 							setValue={setV}
@@ -150,6 +154,7 @@ export const App = () => {
 }
 
 const MatrixInput = ({
+	isVector,
 	rows,
 	columns,
 	value: initialValue,
@@ -184,6 +189,10 @@ const MatrixInput = ({
 		}
 
 		if (!currentRows.every(row => row.split(' ').every(num => num.match(/^\d+([,.]\d+)?$/)))) {
+			return false
+		}
+
+		if ((!isVector) && (!currentRows.every(row => Math.abs(row.split(' ').reduce((acc, cur) => parseFloat(acc) + parseFloat(cur)) - 1) < Number.EPSILON))) {
 			return false
 		}
 
